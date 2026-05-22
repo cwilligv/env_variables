@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Install R packages
-RUN R -e "install.packages(c('shiny', 'config', 'bslib', 'dotenv'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'config', 'bslib', 'dotenv'), repos='https://cloud.r-project.org/, dependencies = TRUE')"
 
 # Copy application files
 COPY ui.R server.R global.R config.yml ./
