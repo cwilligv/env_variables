@@ -30,7 +30,7 @@ A demonstration R Shiny application that displays environment variables using th
 ### 1. Install Dependencies
 
 ```r
-install.packages(c("shiny", "config", "bslib"))
+install.packages(c("shiny", "config", "bslib", "dotenv"))
 ```
 
 ### 2. Set Up Environment Variables
@@ -50,6 +50,8 @@ cp .env.example .env
 library(shiny)
 runApp(port = 8080)
 ```
+
+The `global.R` file automatically loads environment variables from `.env` when running locally.
 
 **From Command Line:**
 ```bash

@@ -1,6 +1,3 @@
-library(shiny)
-library(bslib)
-
 ui <- page_navbar(
   title = "Environment Variables Viewer",
   theme = bs_theme(

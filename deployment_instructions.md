@@ -15,7 +15,7 @@
 ### 1. Install Required R Packages
 
 ```r
-install.packages(c("shiny", "config", "bslib"))
+install.packages(c("shiny", "config", "bslib", "dotenv"))
 ```
 
 ### 2. Set Up Environment Variables
@@ -27,21 +27,9 @@ cp .env.example .env
 
 Edit `.env` and fill in your actual secret values.
 
-### 3. Load Environment Variables and Run Locally
+### 3. Run the Application Locally
 
-**On Windows (PowerShell):**
-```powershell
-Get-Content .env | ForEach-Object {
-    if ($_ -match '^([^=]+)=(.*)$') {
-        [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2], 'Process')
-    }
-}
-```
-
-**On Unix/Mac/Linux:**
-```bash
-export $(cat .env | xargs)
-```
+The app automatically loads `.env` via the `global.R` file (using the `dotenv` package).
 
 **Run the app:**
 ```r

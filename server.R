@@ -1,7 +1,3 @@
-library(shiny)
-library(config)
-library(bslib)
-
 server <- function(input, output, session) {
 
   # Get config based on R_CONFIG_ACTIVE environment variable

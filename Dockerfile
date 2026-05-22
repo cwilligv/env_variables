@@ -14,10 +14,10 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Install R packages
-RUN R -e "install.packages(c('shiny', 'config', 'bslib'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'config', 'bslib', 'dotenv'), repos='https://cloud.r-project.org/')"
 
 # Copy application files
-COPY ui.R server.R config.yml ./
+COPY ui.R server.R global.R config.yml ./
 
 # Expose port for Cloud Run
 EXPOSE 8080
