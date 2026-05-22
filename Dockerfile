@@ -1,20 +1,18 @@
 # Use official R base image
-FROM rocker/r-ver:4.3.2
+FROM rocker/r-ver:4.2.2
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    libcurl4-openssl-dev \
+    sudo \
+    pandoc \
+    pandoc-citeproc \
+    libcurl4-gnutls-dev \
+    libcairo2-dev \
+    libxt-dev \
     libssl-dev \
-    libxml2-dev \
-    libpq-dev \
-    libmariadb-dev \
-    libfontconfig1-dev \
-    libfreetype6-dev \
-    libfribidi-dev \
-    libharfbuzz-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libtiff-dev \
+    libssh2-1-dev \
+    libglpk-dev \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
