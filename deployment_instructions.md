@@ -15,7 +15,7 @@
 ### 1. Install Required R Packages
 
 ```r
-install.packages(c("shiny", "config", "shinydashboard"))
+install.packages(c("shiny", "config", "bslib"))
 ```
 
 ### 2. Set Up Environment Variables

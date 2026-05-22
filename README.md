@@ -30,7 +30,7 @@ A demonstration R Shiny application that displays environment variables using th
 ### 1. Install Dependencies
 
 ```r
-install.packages(c("shiny", "config", "shinydashboard"))
+install.packages(c("shiny", "config", "bslib"))
 ```
 
 ### 2. Set Up Environment Variables

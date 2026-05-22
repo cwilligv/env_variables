@@ -1,66 +1,76 @@
 library(shiny)
-library(shinydashboard)
+library(bslib)
 
-ui <- dashboardPage(
-  dashboardHeader(title = "Environment Variables Viewer"),
-
-  dashboardSidebar(
-    sidebarMenu(
-      menuItem("Environment Variables", tabName = "env_vars", icon = icon("key"))
-    )
+ui <- page_navbar(
+  title = "Environment Variables Viewer",
+  theme = bs_theme(
+    version = 5,
+    bootswatch = "flatly",
+    primary = "#2C3E50",
+    base_font = font_google("Inter")
   ),
 
-  dashboardBody(
-    tabItems(
-      tabItem(
-        tabName = "env_vars",
+  nav_panel(
+    title = "Environment Variables",
+    icon = icon("key"),
 
-        fluidRow(
-          box(
-            title = "Current Environment",
-            status = "primary",
-            solidHeader = TRUE,
-            width = 12,
-            verbatimTextOutput("current_env")
-          )
+    layout_columns(
+      col_widths = c(12),
+      card(
+        card_header(
+          "Current Environment",
+          class = "bg-primary text-white"
         ),
+        card_body(
+          verbatimTextOutput("current_env")
+        )
+      )
+    ),
 
-        fluidRow(
-          box(
-            title = "Database Configuration",
-            status = "info",
-            solidHeader = TRUE,
-            width = 6,
-            tableOutput("db_config")
-          ),
-
-          box(
-            title = "API & Authentication",
-            status = "warning",
-            solidHeader = TRUE,
-            width = 6,
-            tableOutput("api_config")
-          )
+    layout_columns(
+      col_widths = c(6, 6),
+      card(
+        card_header(
+          "Database Configuration",
+          class = "bg-info text-white"
         ),
-
-        fluidRow(
-          box(
-            title = "Email Configuration",
-            status = "success",
-            solidHeader = TRUE,
-            width = 12,
-            tableOutput("email_config")
-          )
+        card_body(
+          tableOutput("db_config")
+        )
+      ),
+      card(
+        card_header(
+          "API & Authentication",
+          class = "bg-warning"
         ),
+        card_body(
+          tableOutput("api_config")
+        )
+      )
+    ),
 
-        fluidRow(
-          box(
-            title = "Raw Environment Variables",
-            status = "primary",
-            solidHeader = TRUE,
-            width = 12,
-            verbatimTextOutput("raw_env")
-          )
+    layout_columns(
+      col_widths = c(12),
+      card(
+        card_header(
+          "Email Configuration",
+          class = "bg-success text-white"
+        ),
+        card_body(
+          tableOutput("email_config")
+        )
+      )
+    ),
+
+    layout_columns(
+      col_widths = c(12),
+      card(
+        card_header(
+          "Raw Environment Variables",
+          class = "bg-primary text-white"
+        ),
+        card_body(
+          verbatimTextOutput("raw_env")
         )
       )
     )
