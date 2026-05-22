@@ -1,25 +1,27 @@
 # Use official R base image
-FROM rocker/r-ver:4.2.2
+FROM rocker/r-ver:4.3.2
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
-    sudo \
-    pandoc \
-    pandoc-citeproc \
-    libcurl4-gnutls-dev \
-    libcairo2-dev \
-    libxt-dev \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    libcurl4-openssl-dev \
     libssl-dev \
-    libssh2-1-dev \
-    libglpk-dev \
-    curl \
+    libxml2-dev \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libpng-dev \
+    libtiff-dev \
+    libjpeg-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
 # Install R packages
-RUN R -e "install.packages(c('shiny', 'config', 'bslib', 'dotenv'), repos='http://cran.rstudio.com', dependencies = TRUE)"
+RUN R -e "install.packages(c('shiny', 'config', 'bslib', 'dotenv'), repos='https://cloud.r-project.org/', dependencies = TRUE)"
 
 # Copy application files
 COPY ui.R server.R global.R config.yml ./
