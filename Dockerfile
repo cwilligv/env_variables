@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev \
     libtiff-dev \
     libjpeg-dev \
+    libuv1-dev \
+    libcairo2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
