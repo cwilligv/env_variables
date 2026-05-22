@@ -8,6 +8,13 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libpq-dev \
     libmariadb-dev \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libfribidi-dev \
+    libharfbuzz-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
