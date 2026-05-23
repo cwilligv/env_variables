@@ -1,8 +1,5 @@
 server <- function(input, output, session) {
 
-  # Get config based on R_CONFIG_ACTIVE environment variable
-  cfg <- config::get()
-
   # Helper function to get environment variable or return empty string
   get_env <- function(var_name) {
     value <- Sys.getenv(var_name, "")
@@ -11,7 +8,7 @@ server <- function(input, output, session) {
 
   # Current environment
   output$current_env <- renderText({
-    env_active <- Sys.getenv("R_CONFIG_ACTIVE", "default")
+    # env_active <- Sys.getenv("R_CONFIG_ACTIVE", "default")
     paste0("Active Environment: ", toupper(env_active), "\n",
            "Config ENV value: ", cfg$ENV)
   })

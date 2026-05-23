@@ -13,3 +13,8 @@ if (Sys.getenv("R_CONFIG_ACTIVE") == "") {
 library(shiny)
 library(config)
 library(bslib)
+
+# Get config based on R_CONFIG_ACTIVE environment variable
+cfg <- config::get()
+
+env_active <- Sys.getenv("R_CONFIG_ACTIVE", "default")
